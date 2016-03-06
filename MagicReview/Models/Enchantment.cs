@@ -6,11 +6,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MagicReview.Models
 {
-    public class Review
+    public class Enchantment : Card
     {
+        [Required]
         public int cardID { get; set; }
-        public int reviewIndex { get; set; }
-        public string username { get; set; }
-        public string reviewText { get; set; }
+
+        [Required]
+        public bool isLegendary { get; set; }
+
+        public List<AppEnums.EnchantmentType> enchantTypes { get; set; }
     }
 }

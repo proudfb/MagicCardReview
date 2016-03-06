@@ -6,11 +6,15 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MagicReview.Models
 {
-    public class Review
+    public class Artifact : Card
     {
+        [Required]
         public int cardID { get; set; }
-        public int reviewIndex { get; set; }
-        public string username { get; set; }
-        public string reviewText { get; set; }
+
+        [Required]
+        public bool isLegendary { get; set; }
+
+        [Required]
+        public List<AppEnums.ArtifactType> artifactTypes { get; set; }
     }
 }
