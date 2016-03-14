@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MagicReview.Models
 {
-    public abstract class Card
+    public class Card
     {
         [Required]
         public string name { get; set; }
@@ -15,7 +15,8 @@ namespace MagicReview.Models
         [Key]
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int ID { get; set; }
+        [RegularExpression(@"[a-zA-z][a-zA-z][a-zA-z]\d\d\d")]
+        public string ID { get; set; }
 
         [Required]
         public int conManaCost { get; set; }
@@ -50,12 +51,13 @@ namespace MagicReview.Models
             @"(\s?(\(r\/[wgp]\))*)?(\s?(\(2\/r\))*)?\s?r*" +
             @"(\s?(\(g\/[wup]\))*)?(\s?(\(2\/g\))*)?\s?g*" +
             @"\s?c*)")]
+        [Required]
         public string manaCost { get; set; }
 
-        [Required]
+        //[Required]
         public List<AppEnums.Type> types { get; set; }
 
-        [Required]
+        //[Required]
         public List<AppEnums.Color> colors { get; set; }
 
         public List<AppEnums.KeywordAbility> keywordAbilities { get; set; }
@@ -68,6 +70,6 @@ namespace MagicReview.Models
 
         public string flavorText { get; set; }
 
-        public List<Review> reviews { get; set; }
+        public virtual ICollection<Review> reviews { get; set; }
     }
 }

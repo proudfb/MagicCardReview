@@ -4,7 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
-namespace MagicReview.DAL
+namespace MagicReview.Models
 {
     public class CardDB : DbContext
     {
@@ -14,6 +14,8 @@ namespace MagicReview.DAL
 
         }
 
-
+        public DbSet<Review> reviews { get; set; }
+        public DbSet<Card> cards { get; set; }
+        public DbSet<User> users { get; set; }
     }
 }
